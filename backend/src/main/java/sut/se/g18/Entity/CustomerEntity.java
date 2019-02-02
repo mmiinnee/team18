@@ -1,6 +1,9 @@
 package sut.se.g18.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import lombok.*;
 
 @Entity
@@ -16,7 +19,9 @@ public class CustomerEntity {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="customer_seq")
     @Column(name="customerId",unique = true, nullable = false)
     private @NonNull Long customerId;
-    private @NonNull String customerName;
+    @NotNull
+    @Size(min = 2,max = 20)
+    private  String customerName;
     private  String customeraddress;
     private  String customerEmail;
     private  String customerphone;
